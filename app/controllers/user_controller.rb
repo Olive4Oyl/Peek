@@ -31,8 +31,8 @@ class UserController < ApplicationController
 
 
   get '/users/login' do
-  erb :'/users/login'
-end
+    erb :'/users/login'
+  end
 
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
