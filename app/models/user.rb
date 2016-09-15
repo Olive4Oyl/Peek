@@ -1,2 +1,7 @@
 class User < ActiveRecord::Base
-end 
+  has_secure_password
+  has_many :posts
+  has_many :comments, :through => :posts
+
+
+end
