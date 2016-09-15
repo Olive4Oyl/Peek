@@ -59,5 +59,4 @@ get '/users/home' do
     redirect to '/'
   end
 
-
 end
