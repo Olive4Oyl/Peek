@@ -3,7 +3,7 @@ class CommentController < ApplicationController
     erb :'/comments/new'
   end
 
-  post '/comments/new/:id' do
+  post '/comments/:id/new' do
     if params[:comment][:content] == nil || params[:comment][:content] == ""
         #put a flash message here
         redirect to '/comments/new'
