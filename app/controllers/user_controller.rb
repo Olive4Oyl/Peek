@@ -47,7 +47,7 @@ post '/users/login' do
       redirect to '/users/login'
     end
   end
-endç
+end
 
 get '/users/home' do
     @user = User.find(session[:id])
