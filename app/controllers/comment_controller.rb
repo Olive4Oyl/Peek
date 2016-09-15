@@ -3,7 +3,7 @@ class CommentController < ApplicationController
     erb :'/comments/new'
   end
 
-  post '/comments/new/:id' do
+  post '/comments/:id/new' do
     if params[:comment][:content] == nil || params[:comment][:content] == ""
         #put a flash message here
         redirect to '/comments/new'
@@ -11,8 +11,9 @@ class CommentController < ApplicationController
         @comment = Comment.create(content: params[:comment][:content])
         @post = Post.find_by_id(params[:id])
         @post.comments << @comment
-      end
-      erb :'/posts/view'
     end
+    erb :'/posts/view'
+  end
+
 
 end
