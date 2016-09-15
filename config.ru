@@ -9,4 +9,4 @@ use Rack::MethodOverride
 run ApplicationController
 use LocationController
 use PostController
-use UserController 
+use UserController
