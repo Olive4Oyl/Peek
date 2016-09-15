@@ -1,2 +1,25 @@
 class LocationController < ApplicationController
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
