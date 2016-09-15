@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+<<<<<<< HEAD
 
   
 
@@ -6,4 +7,7 @@ class Location < ActiveRecord::Base
 
 
 
+=======
+  
+>>>>>>> cd637474ef7183414fd4986fd015286cfb312139
 end
