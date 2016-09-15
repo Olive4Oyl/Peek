@@ -9,15 +9,11 @@ class PostController < ApplicationController
       redirect to '/posts/new'
     else
       @post = Post.create(content: params[:post][:content])
-<<<<<<< HEAD
-    end
-=======
       @user = User.find_by_id(session[:id])
       @user.posts << @post
       @post.user =  @user
     end
     erb :'/users/home'
->>>>>>> 6bc5bd97105d399996a6be31f221706309aa54af
   end
 
   
