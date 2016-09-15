@@ -31,8 +31,8 @@ class UserController < ApplicationController
 
 
   get '/users/login' do
-  erb :'/users/login'
-end
+    erb :'/users/login'
+  end
 
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
@@ -47,7 +47,7 @@ post '/users/login' do
       redirect to '/users/login'
     end
   end
-endç
+end
 
 get '/users/home' do
     @user = User.find(session[:id])
