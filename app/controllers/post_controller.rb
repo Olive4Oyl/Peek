@@ -9,7 +9,7 @@ class PostController < ApplicationController
       redirect to '/posts/new'
     else
       @post = Post.create(content: params[:post][:content])
-
+    end
   end
 
 end
