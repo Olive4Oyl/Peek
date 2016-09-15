@@ -32,6 +32,7 @@ GEM
     eventmachine (1.2.0.1)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    geocoder (1.4.0)
     hashie (3.4.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -140,6 +141,7 @@ DEPENDENCIES
   activerecord
   bcrypt
   capybara
+  geocoder
   pry
   rack-flash3
   rack-test
