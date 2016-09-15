@@ -4,5 +4,5 @@ display all of the users formns in boxes and a search bar.
 menu drag down button.
 
 <%@user.posts.each do |post|%>
-<a href="/posts/view"><%=post.name</a>
+<a href="/posts/<%=post.id%>/view"><%=post.name</a>
 <%end%>
