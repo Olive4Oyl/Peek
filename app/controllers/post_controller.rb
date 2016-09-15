@@ -16,7 +16,6 @@ class PostController < ApplicationController
     erb :'/users/home'
   end
 
-<<<<<<< HEAD
   get '/posts/view' do
     erb :'/posts/view'
   end
@@ -32,7 +31,3 @@ class PostController < ApplicationController
   end
 
 end
-=======
-  
-end
->>>>>>> cd637474ef7183414fd4986fd015286cfb312139

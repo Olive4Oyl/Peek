@@ -7,7 +7,7 @@ class UserController < ApplicationController
 
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
-      flash message enter something into the fields
+      #flash message enter something into the fields
       # flash[:message] = "You are missing a field."
       redirect to '/users/signup'
     else
@@ -39,7 +39,17 @@ post '/users/login' do
     #flash message enter something into the fields
     redirect to '/users/signup'
   else
+    location = {}
+    output = JSON.parse(open('http://ipinfo.io').read)
+    location[:city] = output["city"].to_s
+    location[:zip_code] = output["postal"].to_s
+    location.to_s
+
     @user = User.find_by(params)
+
+    @user.city = location[:city]
+    @user.zip_location = location[:zip_code]
+    @user.save
     if !@user.nil?
       session[:id] = @user.id
       redirect '/users/home'
