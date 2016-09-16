@@ -1,6 +1,7 @@
 require 'socket'
 require 'json'
 require 'open-uri'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
