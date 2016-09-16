@@ -1,24 +1,57 @@
 class PostController < ApplicationController
 
   get '/posts/new' do
-    erb :'/posts/new_from_home'
+    @user = User.find_by(id: session[:id])
+
+    erb :'/posts/new'
   end
 
-  post '/posts/new' do
+  get '/posts/:id/home/new' do
+      @user = User.find_by(id: session[:id])
+      redirect to '/posts/new'
+    end
+
+    post '/posts/:zipcode/new' do
+
+      if params[:post][:content] == nil || params[:post][:content] == nil
+      flash[:message] = "Hey you need to enter a name and content!"
+      else
+
+      @post = Post.create(content: params[:post][:content], name: params[:post][:name])
+      @user = User.find_by_id(session[:id])
+      @forum = Forum.find_or_create_by(params[:id])
+      @forum.posts << @post
+      @user.posts << @post
+      @post.user =  @user
+    end
+
+      erb :"/users/home"
+
+  end
+
+
+
+
+  get '/posts/:id/forum/new' do
     if params[:post][:content] == nil || params[:post][:content] == ""
       #insert flash message
       redirect to '/posts/new'
     else
       @post = Post.create(content: params[:post][:content], name: params[:post][:name])
       @user = User.find_by_id(session[:id])
-      @post.location = @user.zip_location
-      @post.likes = 0
-      @post.dislikes = 0
+      @forum = Forum.find_by_id(params[:id])
+      @forum.posts << @post
       @user.posts << @post
       @post.user =  @user
     end
-    erb :'/users/home'
+
+      erb :"/locations/forums"
+
   end
+
+
+
+
 
   get '/posts/:id/view' do
     @post = Post.find(params[:id])

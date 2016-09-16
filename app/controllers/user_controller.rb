@@ -37,7 +37,7 @@ class UserController < ApplicationController
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
     #flash message enter something into the fields
-    redirect to '/users/signup'
+    redirect to '/'
   else
     location = {}
     output = JSON.parse(open('http://ipinfo.io').read)

@@ -1,8 +1,6 @@
 create a new post page
-
-<h2> Create Your New forum</h2>
-
-<form method="POST" action="/posts/new">
+<h2> Create Your New Post</h2>
+<form method="POST" action="/posts/<%=@user.zip_location%>/new">
 <p>Name of Forum: <input name="post[name]" type="text">
 <br><br>
 <p>Content: <input name="post[content]" type="text"></p>
