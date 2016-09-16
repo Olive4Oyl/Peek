@@ -1,4 +1,4 @@
-class LikesDislikes < ActiveRecord::Base
-  belongs_to :user
-  has_many :posts, :through => :users
+class LikeDislikes < ActiveRecord::Base
+belongs_to :post
+belongs_to :user
 end

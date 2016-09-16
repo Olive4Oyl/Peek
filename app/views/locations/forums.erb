@@ -1,0 +1,7 @@
+Here is the location forum! Checkout the Posts!
+
+<%@locations.forums.each do |post|%>
+<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
+<br></br>
+<%end%>
+<a href="/posts/new">Create A New Post</a>
