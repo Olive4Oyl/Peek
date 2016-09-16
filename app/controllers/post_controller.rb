@@ -6,7 +6,7 @@ class PostController < ApplicationController
     erb :'/posts/new'
   end
 
-  post '/posts/:id/new' do
+  post '/posts/:id/:bool/new' do
     if params[:post][:content] == nil || params[:post][:content] == ""
       #insert flash message
       redirect to '/posts/new'
@@ -20,7 +20,11 @@ class PostController < ApplicationController
       @user.posts << @post
       @post.user =  @user
     end
-    erb :'/users/home'
+    if bool == true
+      erb :"/user/home"
+    else
+      erb :'/locations/forums'
+    end
   end
 
 
