@@ -55,5 +55,5 @@ class PostController < ApplicationController
     @post = Post.find_by(id: params[:id])
     erb :'/posts/edit'
   end
-
+#hi
 end
