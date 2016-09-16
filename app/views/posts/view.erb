@@ -1,9 +1,12 @@
 this is the forumn page that just displays the forumn it
 does not let you comment without the pressing on the href link to reply
 which directs you to the comment/new route
-
-<%=@post.comments%>
+<br></br>
+<%=@post.content%>
 <a href="/comments/new">Comment</a>
-likes
-dislikes
+<br></br>
+<a href="/posts/<%=@post.id%>/new_like">Like :) </a><%=@post.likes%>
+<br></br>
+<a href="/posts/<%=@post.id%>/new_dislike">Dislike :( </a><%=@post.dislikes%>
+<br></br>
 <a href="/users/home">Back</a>

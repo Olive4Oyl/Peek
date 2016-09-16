@@ -1,15 +1,15 @@
-<<<<<<< HEAD
-<%binding.pry%>
+
 <%=@user.name%>
 <%=@user.zip_location%>
 <%=@user.city%>
-=======
+
 This is the users homepage
 This page should recognize the user due to session and also
 display all of the users formns in boxes and a search bar.
 menu drag down button.
 
 <%@user.posts.each do |post|%>
-<a href="/posts/<%=post.id%>/view"><%=post.name</a>
+<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
->>>>>>> 439062992944c9e0a7621c5732c0ae50b07741a2
+
+<a href="/posts/new">Create new Post</a>

@@ -41,6 +41,7 @@ post '/users/login' do
   else
     location = {}
     output = JSON.parse(open('http://ipinfo.io').read)
+
     location[:city] = output["city"].to_s
     location[:zip_code] = output["postal"].to_s
     location.to_s

@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915214654) do
+ActiveRecord::Schema.define(version: 9) do
 
   create_table "comments", force: :cascade do |t|
     t.string  "content"
     t.integer "likes"
     t.integer "dislikes"
+  end
+
+  create_table "likes_dislikes", force: :cascade do |t|
+    t.integer "likes"
+    t.integer "dislikes"
+    t.integer "user_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -25,11 +31,12 @@ ActiveRecord::Schema.define(version: 20160915214654) do
 
   create_table "posts", force: :cascade do |t|
     t.string  "content"
-    t.integer "likes"
-    t.integer "dislikes"
     t.integer "share_count"
     t.integer "user_id"
     t.string  "name"
+    t.string  "location"
+    t.integer "likes"
+    t.integer "dislikes"
   end
 
   create_table "users", force: :cascade do |t|
