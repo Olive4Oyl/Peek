@@ -19,9 +19,10 @@ class PostController < ApplicationController
     erb :'/users/home'
   end
 
-<<<<<<< HEAD
   get '/posts/view' do
-=======
+
+  end
+
   get '/posts/:id/view' do
     @post = Post.find(params[:id])
     erb :'/posts/view'
@@ -30,23 +31,36 @@ class PostController < ApplicationController
   get '/posts/:id/new_like' do
     @post = Post.find_by_id(params[:id])
     @user = User.find_by_id(session[:id])
+    # binding.pry
+
+    # if @post.likes_array.include?(@user)
+    #   #flash error message
+    #   #blablablabalabalba
+    #   null
+    # else
+    #   @post.likes += 1
+    #   @post.likes_array << @user
+    #   @post.save
+    # end
+    prev = @post.likes
+    @post.likes += 1
+    @post.save
     binding.pry
-    if @post.likes_array.include?(@user)
-      #flash error message
-      #blablablabalabalba
-    else
-      @post.likes += 1
-      @post.likes_array << @user
-      @post.save
-    end
+    if prev+1 > @post.likes
+    @post.likes += 1
+    @post.save
+  end
+
     erb :'/posts/view'
   end
 
   get '/posts/:id/new_dislike' do
     @post = Post.find_by_id(params[:id])
+    if @post.user_id != @post.user.id 
     @post.dislikes += 1
     @post.save
->>>>>>> 20fb723a758e011b5fb966f5a2eab0492f545501
+  end
+
     erb :'/posts/view'
   end
 
@@ -59,11 +73,8 @@ class PostController < ApplicationController
     @post = Post.find_by(id: params[:id])
     erb :'/posts/edit'
   end
-<<<<<<< HEAD
+
 
 end
 
-=======
-#hi
-end
->>>>>>> 20fb723a758e011b5fb966f5a2eab0492f545501
+

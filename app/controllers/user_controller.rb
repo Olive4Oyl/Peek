@@ -12,13 +12,11 @@ class UserController < ApplicationController
 
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
-<<<<<<< HEAD
+
       # flash message enter something into the fields
       flash[:message] = "You are missing a field."
-=======
       #flash message enter something into the fields
       # flash[:message] = "You are missing a field."
->>>>>>> 20fb723a758e011b5fb966f5a2eab0492f545501
       redirect to '/users/signup'
     else
       submitted_email = params[:email]
