@@ -6,8 +6,8 @@ class PostController < ApplicationController
     erb :'/posts/new'
   end
 
-  post '/posts/:id/:bool/new' do
-    if params[:post][:content] == nil || params[:post][:content] == ""
+  get '/posts/:id/home/new' do
+    if params[:post][:content] == nil || params[:post][:content] == nil
       #insert flash message
       redirect to '/posts/new'
     else
@@ -20,15 +20,30 @@ class PostController < ApplicationController
       @user.posts << @post
       @post.user =  @user
     end
-    if bool == true
+
       erb :"/user/home"
-    else
-      erb :'/locations/forums'
-    end
+
   end
 
 
+  get '/posts/:id/forum/new' do
+    if params[:post][:content] == nil || params[:post][:content] == ""
+      #insert flash message
+      redirect to '/posts/new'
+    else
+      @post = Post.create(content: params[:post][:content], name: params[:post][:name])
+      @user = User.find_by_id(session[:id])
+      @forum = Forum.find_by_id(params[:id])
+      @forum.posts << @post
+      @post.likes = 0
+      @post.dislikes = 0
+      @user.posts << @post
+      @post.user =  @user
+    end
 
+      erb :"/locations/forums"
+
+  end
 
 
 
