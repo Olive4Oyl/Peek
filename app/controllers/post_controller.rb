@@ -10,6 +10,8 @@ class PostController < ApplicationController
     else
       @post = Post.create(content: params[:post][:content])
       @user = User.find_by_id(session[:id])
+      @post.likes = 0
+      @post.dislikes = 0
       @user.posts << @post
       @post.user =  @user
     end
