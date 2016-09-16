@@ -1,14 +1,19 @@
 class UserController < ApplicationController
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+\
 
   get '/users/signup' do
     erb :'/users/signup'
   end
 
+  get '/chat' do
+    erb :chat
+  end
+
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
-      flash message enter something into the fields
-      # flash[:message] = "You are missing a field."
+      # flash message enter something into the fields
+      flash[:message] = "You are missing a field."
       redirect to '/users/signup'
     else
       submitted_email = params[:email]

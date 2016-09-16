@@ -1,6 +1,7 @@
 require 'socket'
 require 'json'
 require 'open-uri'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -11,18 +12,11 @@ class ApplicationController < Sinatra::Base
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/' do
-<<<<<<< HEAD
-    
-    erb :index
-  end
-=======
->>>>>>> cd637474ef7183414fd4986fd015286cfb312139
-
     location = {}
     output = JSON.parse(open('http://ipinfo.io').read)
     location[:city] = output["city"].to_s
     location[:zipcode] = output["postal"].to_s
     location.to_s
-
+    erb :index
   end
 end
