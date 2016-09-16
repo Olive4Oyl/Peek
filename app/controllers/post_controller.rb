@@ -33,7 +33,8 @@ class PostController < ApplicationController
 
   get '/posts/:id/new_like' do
     @post = Post.find_by_id(params[:id])
-    @user = User.find_by_id(session[:id])
+    # @user = User.find_by_id(session[:id])
+
     # binding.pry
 
     # if @post.likes_array.include?(@user)
@@ -45,15 +46,11 @@ class PostController < ApplicationController
     #   @post.likes_array << @user
     #   @post.save
     # end
-    prev = @post.likes
-    @post.likes += 1
-    @post.save
-    binding.pry
-    if prev+1 > @post.likes
-    @post.likes += 1
-    @post.save
-  end
-
+    if @post.user_id != @post.user.id
+      @post.likes += 1
+      @post.save
+    end
+    
     erb :'/posts/view'
   end
 

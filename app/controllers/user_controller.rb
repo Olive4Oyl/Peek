@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-\
+
 
   get '/users/signup' do
     erb :'/users/signup'
