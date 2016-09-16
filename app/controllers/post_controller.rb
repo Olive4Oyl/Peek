@@ -6,14 +6,15 @@ class PostController < ApplicationController
     erb :'/posts/new'
   end
 
-  post '/posts/new' do
+  post '/posts/:id/new' do
     if params[:post][:content] == nil || params[:post][:content] == ""
       #insert flash message
       redirect to '/posts/new'
     else
       @post = Post.create(content: params[:post][:content], name: params[:post][:name])
       @user = User.find_by_id(session[:id])
-      @post.location = @user.zip_location
+      @forum = Forum.find_or_create_by(params[:id])
+      @forum.posts << @post
       @post.likes = 0
       @post.dislikes = 0
       @user.posts << @post
@@ -22,9 +23,18 @@ class PostController < ApplicationController
     erb :'/users/home'
   end
 
+<<<<<<< HEAD
   get '/posts/view' do
 
   end
+=======
+
+
+
+
+
+
+>>>>>>> 081f51d68d03daf676192a953b789202170fa733
 
   get '/posts/:id/view' do
     @post = Post.find(params[:id])
