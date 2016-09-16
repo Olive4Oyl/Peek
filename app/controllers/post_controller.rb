@@ -1,6 +1,7 @@
 class PostController < ApplicationController
+
   get '/posts/new' do
-    erb :'/posts/new'
+    erb :'/posts/new_from_home'
   end
 
   post '/posts/new' do
