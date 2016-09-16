@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.string  "name"
     t.integer "user_id"
     t.integer "forum_id"
+    t.string  "content"
   end
 
   create_table "users", force: :cascade do |t|
