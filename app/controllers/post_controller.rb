@@ -30,6 +30,7 @@ class PostController < ApplicationController
     binding.pry
     if @post.likes_array.include?(@user)
       #flash error message
+      #blablablabalabalba
     else
       @post.likes += 1
       @post.likes_array << @user
