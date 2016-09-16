@@ -18,7 +18,8 @@ class PostController < ApplicationController
     erb :'/users/home'
   end
 
-  get '/posts/view' do
+  get '/posts/:id/view' do
+    @post = Post.find(params[:id])
     erb :'/posts/view'
   end
 
