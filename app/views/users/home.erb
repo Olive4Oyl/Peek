@@ -1,0 +1,22 @@
+
+<form method="POST" action="/locations/view_forums"><input type="text" name="user_input" value="Search Peek"></form>
+<a href="/users/logout">Log Out</a>
+
+
+
+This is the users homepage
+This page should recognize the user due to session and also
+display all of the users formns in boxes and a search bar.
+menu drag down button.
+
+
+
+
+
+
+<%@user.posts.each do |post|%>
+<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
+<%end%>
+
+
+<a href="/posts/new">Create new Post</a>

@@ -1,8 +1,15 @@
 <h2>Join this Forum!</h2>
 <form method="POST" action="/comments/<%=@post.id%>/new">
-<input type="text" name="post[comment][]">
+<input type="text" name="comment[content]">
 This is the reply box for a forumn. the actual forumn will be held here
 <button type="submit" name="submit">Comment</button>
+
+We want to have an gif tag
+We want to have an emoji tag generate our random emojis
+gem emoji for generateing emoji gem
+gem gify for emoji
+Has a href tag to go back to forum aka post that it belongs to
+<a href="/posts/<%=@post.id%>/view">Back</a>
 
 
 

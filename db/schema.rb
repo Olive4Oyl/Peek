@@ -10,31 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 7) do
 
   create_table "comments", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
     t.string  "content"
-    t.integer "likes"
-    t.integer "dislikes"
   end
 
-  create_table "post_comments", force: :cascade do |t|
-    t.integer "comment_id"
-    t.integer "post_id"
+  create_table "dislikes", force: :cascade do |t|
+  end
+
+  create_table "likes", force: :cascade do |t|
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string  "city"
+    t.integer "zip_location"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string  "content"
-    t.integer "likes"
-    t.integer "dislikes"
-    t.integer "share_count"
+    t.string  "name"
     t.integer "user_id"
+    t.integer "location_id"
+    t.string  "content"
+    t.integer "like_id"
+    t.integer "dislike_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string  "name"
+    t.string  "email"
+    t.string  "password_digest"
+    t.integer "location_id"
+    t.integer "like_id"
+    t.integer "dislike_id"
   end
 
 end

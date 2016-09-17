@@ -1,1 +1,37 @@
+this is the forumn page that just displays the forumn it
+does not let you comment without the pressing on the href link to reply
+which directs you to the comment/new route
+<%Like.all.each do |current_like| %>
+<% if current_like.posts.include?(@post) %>
+<% @like = current_like %>
 
+<% end %>
+<%end%>
+<%Dislike.all.each do |current_dislike| %>
+  <%if current_dislike.posts.include?(@post)%>
+  <%@dislike = current_dislike%>
+  <%end%>
+<%end%>
+
+
+
+<br></br>
+<%=@post.content%>
+<br><br>
+
+<%@post.comments.each do |comment|%>
+<%=comment.content%>
+<%end%>
+<a href="/posts/<%=@post.id%>/new_like">Like</a>:)<%=@like.users.length%>
+
+
+
+<br></br>
+<a href="/posts/<%=@post.id%>/new_dislike">Dislike</a><%=@dislike.users.length%>
+
+<a href="/comments/<%=@post.id%>/new">Comment</a>
+<br></br>
+
+
+<br></br>
+<a href="/users/home">Back</a>

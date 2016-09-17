@@ -7,8 +7,6 @@ class UserController < ApplicationController
 
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
-      flash message enter something into the fields
-      # flash[:message] = "You are missing a field."
       redirect to '/users/signup'
     else
       submitted_email = params[:email]
@@ -16,11 +14,20 @@ class UserController < ApplicationController
         User.all.each do |user|
           if user.email == submitted_email
             redirect to '/users/login'
-            #flash message saying this email has an account
+
           end
         end
         @user = User.create(params)
         session[:id] = @user.id
+
+        location_hash = {}
+        output = JSON.parse(open('http://ipinfo.io').read)
+
+        location_hash[:city] = output["city"]
+        location_hash[:zip_code] = output["postal"]
+        location_hash.to_s
+        @current_location = Location.find_or_create_by(city: location_hash[:city])
+        @current_location.users << @user
         redirect '/users/home'
       else
         #put a flash message saying enter a valid email
@@ -30,6 +37,8 @@ class UserController < ApplicationController
   end
 
 
+
+
   get '/users/login' do
     erb :'/users/login'
   end
@@ -37,11 +46,23 @@ class UserController < ApplicationController
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
     #flash message enter something into the fields
-    redirect to '/users/signup'
+    redirect to '/'
   else
+    location_hash = {}
+    output = JSON.parse(open('http://ipinfo.io').read)
+
+    location_hash[:city] = output["city"]
+    location_hash[:zip_code] = output["postal"]
+    location_hash.to_s
+
+    @current_location = Location.find_or_create_by(city: location_hash[:city])
+
     @user = User.find_by(params)
+    @user.save
+
     if !@user.nil?
       session[:id] = @user.id
+      @current_location.users << @user
       redirect '/users/home'
     else
       redirect to '/users/login'
@@ -54,9 +75,16 @@ get '/users/home' do
     erb :'/users/home'
   end
 
+
+
   get '/users/logout' do
+    @user = User.find_by(id: session[:id])
+    @current_location = Location.find_by(id: @user.location_id)
+    @current_location.users.delete(@user)
     session.clear
     redirect to '/'
-  end
+  end 
+
+
 
 end
