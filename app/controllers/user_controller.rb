@@ -83,7 +83,7 @@ get '/users/home' do
     @current_location.users.delete(@user)
     session.clear
     redirect to '/'
-  end
+  end 
 
 
 
