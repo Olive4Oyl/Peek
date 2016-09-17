@@ -21,11 +21,6 @@ ActiveRecord::Schema.define(version: 7) do
   create_table "dislikes", force: :cascade do |t|
   end
 
-  create_table "forums", force: :cascade do |t|
-    t.string  "city_name"
-    t.integer "location_id"
-  end
-
   create_table "likes", force: :cascade do |t|
   end
 
@@ -37,7 +32,7 @@ ActiveRecord::Schema.define(version: 7) do
   create_table "posts", force: :cascade do |t|
     t.string  "name"
     t.integer "user_id"
-    t.integer "forum_id"
+    t.integer "location_id"
     t.string  "content"
     t.integer "like_id"
     t.integer "dislike_id"
@@ -47,8 +42,6 @@ ActiveRecord::Schema.define(version: 7) do
     t.string  "name"
     t.string  "email"
     t.string  "password_digest"
-    t.string  "city"
-    t.string  "zip_location"
     t.integer "location_id"
     t.integer "like_id"
     t.integer "dislike_id"

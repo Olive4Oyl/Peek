@@ -3,5 +3,5 @@ class Post < ActiveRecord::Base
   has_many :comments
   belongs_to :like
   belongs_to :dislike
-  belongs_to :forum
+  belongs_to :location
 end

@@ -5,8 +5,7 @@ class CommentController < ApplicationController
   end
 
   post '/comments/:id/new' do
-    if params[:comment][:content] == nil || params[:comment][:content] == ""
-        #put a flash message here
+    if params[:comment][:content] == nil || params[:comment][:content] == "" 
         redirect to "/comments/#{params[:id]}/new"
     else
         @comment = Comment.create(content: params[:comment][:content])

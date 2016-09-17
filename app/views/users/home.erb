@@ -1,8 +1,8 @@
 
+<form method="POST" action="/locations/view_forums"><input type="text" name="user_input" value="Search Peek"></form>
+<a href="/users/logout">Log Out</a>
 
-<%=@user.name%>
-<%=@user.zip_location%>
-<%=@user.city%>
+
 
 This is the users homepage
 This page should recognize the user due to session and also
@@ -14,10 +14,9 @@ menu drag down button.
 
 
 
-
 <%@user.posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
 
 
-<a href="/posts/<%=@user.zip_location%>/new">Create new Post</a>
+<a href="/posts/new">Create new Post</a>

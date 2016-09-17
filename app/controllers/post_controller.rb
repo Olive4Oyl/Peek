@@ -4,14 +4,10 @@ class PostController < ApplicationController
 
   get '/posts/new' do
     @user = User.find_by(id: session[:id])
+
+    @inputed_location = Location.find_by(id: @user.location_id)
     erb :'/posts/new'
   end
-
-  get '/posts/:id/new' do                    #create a new post
-      @user = User.find_by(id: session[:id])
-      redirect to '/posts/new'
-
-    end
 
     post '/posts/:id/new' do   #this is to create a new post
 
@@ -19,11 +15,9 @@ class PostController < ApplicationController
 
       redirect "/posts/#{params[:id]}/new"
       else
-
       @post = Post.create(name: params[:post][:name], content: params[:post][:content])
       @user = User.find_by_id(session[:id])
-      @forum = Forum.find_or_create_by(city_name: @user.city)
-      @forum.posts << @post
+      @location = Location.find_or_create_by(city: params[:id])
       @user.posts << @post
       @post.user =  @user
       @like = Like.new
@@ -32,6 +26,7 @@ class PostController < ApplicationController
       @dislike.posts << @post
       @like.save
       @dislike.save
+      @location.posts << @post
 
     end
 
@@ -55,6 +50,7 @@ class PostController < ApplicationController
   get '/posts/:id/new_like' do
     @post = Post.find_by_id(params[:id])
     @user = User.find_by_id(session[:id])
+
     Like.all.each do |current_like|
       if current_like.posts.include?(@post)
         @like = current_like
@@ -111,16 +107,24 @@ class PostController < ApplicationController
 
 
 
+#
+#
+#   get '/posts/:id/edit' do
+#     @post = Post.find_by(id: params[:id])
+#     erb :'/posts/edit'
+#   end
+# #hi
 
 
-  get '/posts/:id' do
-    @post = Post.find_by(id: params[:id])
-    erb :'/posts/view'
+
+
+
+
+  get '/posts/:id/location' do
+    @user = User.find_by(id: session[:id])
+    @inputed_location = params[:id]
+
+    erb :'/posts/new'
+
   end
-
-  get '/posts/:id/edit' do
-    @post = Post.find_by(id: params[:id])
-    erb :'/posts/edit'
-  end
-#hi
 end
