@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments
-  has_many :like_dislikes
+  belongs_to :like
+  belongs_to :dislike
+  belongs_to :location
 end

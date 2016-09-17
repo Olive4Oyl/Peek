@@ -1,9 +1,12 @@
 create a new post page
 <h2> Create Your New Post</h2>
-<form method="POST" action="/posts/<%=@user.zip_location%>/new">
-<p>Name of Forum: <input name="post[name]" type="text">
+
+<form method="POST" action="/posts/<%=@inputed_location.city%>/new">
+
+<p>Name your creppy post: <input name="post[name]" type="text">
+  <p>Create your creepy content: <input name="post[content]" type="text">
 <br><br>
-<p>Content: <input name="post[content]" type="text"></p>
+
 
 <button type="submit" name="submit">Submit</button>
 </form>

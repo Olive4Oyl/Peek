@@ -17,9 +17,6 @@ end
 
 
 
-
-
-
   helpers do
 
     def logged_in?
@@ -30,8 +27,6 @@ end
        User.find_by(id: session[:id])
 
     end
-
-
 
 
 

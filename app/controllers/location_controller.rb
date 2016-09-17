@@ -1,10 +1,13 @@
 class LocationController < ApplicationController
 
 
-  get "/view_forums" do
-    @locations = Location.find_or_create_by(params[:user_input])
+  post "/locations/view_forums" do
+
+    @location = Location.find_or_create_by(city: params[:user_input])
     erb :'/locations/forums'
   end
+
+
 
 
 
