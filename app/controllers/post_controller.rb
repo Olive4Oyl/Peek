@@ -4,9 +4,6 @@ class PostController < ApplicationController
 
   get '/posts/new' do
     @user = User.find_by(id: session[:id])
-
-
-
     erb :'/posts/new'
   end
 
@@ -18,14 +15,13 @@ class PostController < ApplicationController
 
     post '/posts/:id/new' do   #this is to create a new post
 
-      if params[:post][:name] == nil
+      if params[:post][:name] == nil || params[:post][:name] == ""
 
-      redirect '/posts/:id/new'
+      redirect "/posts/#{params[:id]}/new"
       else
 
       @post = Post.create(name: params[:post][:name], content: params[:post][:content])
       @user = User.find_by_id(session[:id])
-      binding.pry
       @forum = Forum.find_or_create_by(city_name: @user.city)
       @forum.posts << @post
       @user.posts << @post
@@ -34,6 +30,9 @@ class PostController < ApplicationController
       @dislike = Dislike.new
       @like.posts << @post
       @dislike.posts << @post
+      @like.save
+      @dislike.save
+
     end
 
       erb :"/users/home"
@@ -47,7 +46,7 @@ class PostController < ApplicationController
   get '/posts/:id/view' do
 
     @post = Post.find_by(id: params[:id])
-    binding.pry
+
     erb :'/posts/view'
   end
 
@@ -62,11 +61,22 @@ class PostController < ApplicationController
       end
     end
 
+    Dislike.all.each do |current_dislike|
+      if current_dislike.posts.include?(@post)
+        @dislike = current_dislike
+      end
+    end
+
+    if @dislike.users.include?(@user)
+      @dislike.users.delete(@user)
+    end
     if !@like.users.include?(@user)
       @like.users << @user
     end
   redirect "posts/#{@post.id}/view"
   end
+
+
 
   get '/posts/:id/new_dislike' do
     @post = Post.find_by_id(params[:id])
@@ -76,11 +86,22 @@ class PostController < ApplicationController
         @dislike = current_dislike
       end
     end
+    Like.all.each do |current_like|
+      if current_like.posts.include?(@post)
+        @like = current_like
+      end
+    end
+
+
+    if @like.users.include?(@user)
+      @like.users.delete(@user)
+    end
     if !@dislike.users.include?(@user)
       @dislike.users << @user
     end
-    redirect "posts/#{@post.id}/view"
+  redirect "posts/#{@post.id}/view"
   end
+
 
 
 

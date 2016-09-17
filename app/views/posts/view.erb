@@ -4,6 +4,7 @@ which directs you to the comment/new route
 <%Like.all.each do |current_like| %>
 <% if current_like.posts.include?(@post) %>
 <% @like = current_like %>
+
 <% end %>
 <%end%>
 <%Dislike.all.each do |current_dislike| %>
@@ -14,8 +15,6 @@ which directs you to the comment/new route
 
 
 
-
-<%binding.pry%>
 <br></br>
 <%=@post.content%>
 <br><br>
