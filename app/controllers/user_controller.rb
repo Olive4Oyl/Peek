@@ -58,9 +58,9 @@ post '/users/login' do
     @current_location = Location.find_or_create_by(city: location_hash[:city])
 
     @user = User.find_by(params)
-    @user.save
 
     if !@user.nil?
+      @user.save
       session[:id] = @user.id
       @current_location.users << @user
       redirect '/users/home'
@@ -83,7 +83,34 @@ get '/users/home' do
     @current_location.users.delete(@user)
     session.clear
     redirect to '/'
-  end 
+  end
+
+  get '/users/update_profile' do
+    erb :'/users/update'
+  end
+
+
+  post "/users/updated" do
+    @user = User.find_by(id: session[:id])
+    @user.email = params[:email]
+    @user.password_digest = params[:password_digest]
+    @user.save
+
+    redirect '/users/home'
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
