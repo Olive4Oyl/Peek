@@ -2,7 +2,6 @@ class PostController < ApplicationController
 
   get '/posts/new' do
     @user = User.find_by(id: session[:id])
-
     erb :'/posts/new'
   end
 
@@ -14,22 +13,17 @@ class PostController < ApplicationController
     post '/posts/:zipcode/new' do
 
       if params[:post][:content] == nil || params[:post][:content] == nil
-      flash[:message] = "Hey you need to enter a name and content!"
+        flash[:message] = "Hey you need to enter a name and content!"
       else
-
-      @post = Post.create(content: params[:post][:content], name: params[:post][:name])
-      @user = User.find_by_id(session[:id])
-      @forum = Forum.find_or_create_by(params[:id])
-      @forum.posts << @post
-      @user.posts << @post
-      @post.user =  @user
-    end
-
+        @post = Post.create(content: params[:post][:content], name: params[:post][:name])
+        @user = User.find_by_id(session[:id])
+        @forum = Forum.find_or_create_by(params[:id])
+        @forum.posts << @post
+        @user.posts << @post
+        @post.user =  @user
+      end
       erb :"/users/home"
-
   end
-
-
 
 
   get '/posts/:id/forum/new' do
