@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6) do
+ActiveRecord::Schema.define(version: 7) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user_id"
+    t.string  "content"
+  end
+
+  create_table "dislikes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "comment_id"
   end
 
   create_table "forums", force: :cascade do |t|
@@ -22,7 +28,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.integer "location_id"
   end
 
-  create_table "like_dislikes", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.integer "post_id"
     t.integer "comment_id"
   end
@@ -46,6 +52,8 @@ ActiveRecord::Schema.define(version: 6) do
     t.string  "city"
     t.string  "zip_location"
     t.integer "location_id"
+    t.integer "like_id"
+    t.integer "dislike_id"
   end
 
 end

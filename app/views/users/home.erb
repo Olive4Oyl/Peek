@@ -1,4 +1,5 @@
 
+
 <%=@user.name%>
 <%=@user.zip_location%>
 <%=@user.city%>
@@ -14,9 +15,9 @@ menu drag down button.
 
 
 
-
 <%@user.posts.each do |post|%>
-<a href="/posts/<%=post.id%>/forum/new"><%=post.name%></a>
+<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
 
-<a href="/posts/<%=@user.zip_location%>/home/new">Create new Post</a>
+
+<a href="/posts/<%=@user.zip_location%>/new">Create new Post</a>
