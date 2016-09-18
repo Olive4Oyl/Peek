@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UserController < ApplicationController
+  use Rack::Flash
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   get '/users/signup' do
@@ -7,19 +10,21 @@ class UserController < ApplicationController
 
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
+      flash[:message] = "Please fill in all categories"
       redirect to '/users/signup'
     else
       submitted_email = params[:email]
       if submitted_email.match(VALID_EMAIL_REGEX) != nil
         User.all.each do |user|
           if user.email == submitted_email
+            flash[:message] = "It looks like you already have an account"
             redirect to '/users/login'
 
           end
         end
         @user = User.create(params)
         session[:id] = @user.id
-        
+
         location_hash = {}
         output = JSON.parse(open('http://ipinfo.io').read)
 
@@ -31,7 +36,7 @@ class UserController < ApplicationController
         @user.save
         redirect '/users/home'
       else
-        #put a flash message saying enter a valid email
+        flash[:message] = "Please enter a valid email address"
         redirect to '/users/signup'
       end
     end
@@ -46,6 +51,7 @@ class UserController < ApplicationController
 
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
+    flash[:message] = "Please fill in all categories"
     redirect to '/'
   else
     location_hash = {}
