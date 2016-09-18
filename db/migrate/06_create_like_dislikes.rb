@@ -4,6 +4,9 @@ class CreateLikeDislikes < ActiveRecord::Migration
       t.integer :post_id
       t.integer :comment_id
 
+      t.integer :like, :default => 0
+      t.integer :dislike, :default => 0
+
 
     end
   end

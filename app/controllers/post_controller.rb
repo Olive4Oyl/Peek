@@ -23,18 +23,11 @@ class PostController < ApplicationController
     erb :'/users/home'
   end
 
-<<<<<<< HEAD
-  get '/posts/view' do
 
-  end
-=======
+  # get '/posts/view' do
 
+  # end
 
-
-
-
-
->>>>>>> 081f51d68d03daf676192a953b789202170fa733
 
   get '/posts/:id/view' do
     @post = Post.find(params[:id])
@@ -43,19 +36,29 @@ class PostController < ApplicationController
 
   get '/posts/:id/new_like' do
     @post = Post.find_by_id(params[:id])
-    # @user = User.find_by_id(session[:id])
+    @user = User.find_by_id(session[:id])
 
+    
+    def get_vote
+  likes_array = @post.detect{|r| r.id == params[:id].to_i}
+  @vote = current_item.votes.find_by_user_id(current_user.id)
+  unless @vote
+    @vote = Vote.create(:user_id => current_user.id, :value => 0)
+    current_item.votes << @vote
+  end
+  end
     # binding.pry
 
-    # if @post.likes_array.include?(@user)
-    #   #flash error message
-    #   #blablablabalabalba
-    #   null
-    # else
-    #   @post.likes += 1
-    #   @post.likes_array << @user
-    #   @post.save
-    # end
+    if @post.likes_array.include?(@user)
+      #flash error message
+      #blablablabalabalba
+      null
+    else
+      @post.likes += 1
+      @post.likes_array << @user
+      @post.save
+    end
+
     if @post.user_id != @post.user.id
       @post.likes += 1
       @post.save
