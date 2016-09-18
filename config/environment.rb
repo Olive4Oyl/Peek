@@ -9,7 +9,7 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-config.assets.paths << Emoji.images_path
-config.assets.precompile << "emoji/**/*.png"
+# config.assets.paths << Emoji.images_path
+# config.assets.precompile << "emoji/**/*.png"
 
 require_all 'app'

@@ -30,18 +30,12 @@ class PostController < ApplicationController
 
     end
 
-<<<<<<< HEAD
-  # get '/posts/view' do
-
-  # end
-=======
       erb :"/users/home"
 
     end
 
 
 
->>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
 
 
   get '/posts/:id/view' do
@@ -57,35 +51,6 @@ class PostController < ApplicationController
     @post = Post.find_by_id(params[:id])
     @user = User.find_by_id(session[:id])
 
-<<<<<<< HEAD
-    
-    def get_vote
-  likes_array = @post.detect{|r| r.id == params[:id].to_i}
-  @vote = current_item.votes.find_by_user_id(current_user.id)
-  unless @vote
-    @vote = Vote.create(:user_id => current_user.id, :value => 0)
-    current_item.votes << @vote
-  end
-  end
-    # binding.pry
-
-    if @post.likes_array.include?(@user)
-      #flash error message
-      #blablablabalabalba
-      null
-    else
-      @post.likes += 1
-      @post.likes_array << @user
-      @post.save
-    end
-
-    if @post.user_id != @post.user.id
-      @post.likes += 1
-      @post.save
-    end
-    
-    erb :'/posts/view'
-=======
     Like.all.each do |current_like|
       if current_like.posts.include?(@post)
         @like = current_like
@@ -105,22 +70,12 @@ class PostController < ApplicationController
       @like.users << @user
     end
   redirect "posts/#{@post.id}/view"
->>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
   end
 
 
 
   get '/posts/:id/new_dislike' do
     @post = Post.find_by_id(params[:id])
-<<<<<<< HEAD
-    if @post.user_id != @post.user.id 
-    @post.dislikes += 1
-    @post.save
-  end
-
-    erb :'/posts/view'
-  end
-=======
     @user = User.find_by_id(session[:id])
     Dislike.all.each do |current_dislike|
       if current_dislike.posts.include?(@post)
@@ -132,7 +87,6 @@ class PostController < ApplicationController
         @like = current_like
       end
     end
->>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
 
 
     if @like.users.include?(@user)
@@ -173,11 +127,4 @@ class PostController < ApplicationController
     erb :'/posts/new'
 
   end
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
 end
-
-

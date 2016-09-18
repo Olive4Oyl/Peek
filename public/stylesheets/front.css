@@ -1,0 +1,172 @@
+.banner {
+  border-bottom: 3px solid #0E1C36;
+  font-family: 'Sigmar One', cursive;
+  max-width: 100%;
+  margin-right: auto;
+  margin-top: -90px;
+  width: 100%;
+  background-color: #0E1C36;
+  
+  overflow: hidden;
+}
+
+.head {
+  height: 150px;
+  width: 150px;
+  background: #000013;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  position: relative;
+  
+  margin: auto;
+  
+  animation: ninja 8s ease infinite;
+}
+.head:before {
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  border-radius: 45%;
+  background: #fff;
+  top: 40%;
+  left: 48%;
+  content:'';
+  
+  transform: translateX(-50%);
+}
+
+.head:after {
+  position: absolute;
+  background: #333;
+  border-radius: 50%;
+  content:'';
+  height: 20px;
+  width: 20px;
+  
+  bottom: 43%;
+  left: 38%;
+  
+  transform: translateX(-50%);
+
+  animation: eyeBlink 5s 1s  linear alternate infinite;
+  box-shadow: 2em 0 #333;
+}
+
+
+
+@keyframes eyeBlink {
+  0% {
+    height: 20px;
+  }
+
+  10% {
+    height: 20px;
+  }
+
+  11% {
+    height: 2px;
+  }
+
+  13% {
+    height: 2px;
+  }
+
+  16% {
+    height: 20px;
+  }
+  
+  62% {
+    height: 20px;
+  }
+  
+  64% {
+    height: 2px;
+  }
+
+  70% {
+    height: 2px;
+  }
+  
+  72% {
+    height: 20px;
+  }
+  
+  100% {
+    height: 20px;
+  }
+}
+
+.head p {
+  background: #fff;
+  border: 1px solid #333;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+@keyframes ninja{
+  0% {
+    bottom: -230px;
+  }
+  30% {
+    bottom: -140px;
+  }
+  70% {
+    bottom: -140px;
+  }
+  100% {
+    bottom: -230px;
+  }
+}
+
+body {
+  background-color: #AFCBFF;
+}
+
+p.index_login {
+  text-align: center;
+  font: ;
+  font-size: 60px;
+}
+
+
+h2{
+  color: #0E1C36;
+}
+
+h3{
+  color: black;
+  font-size: 30px;
+}
+a {
+  padding: 50px;
+  font-family: sans-serif;
+}
+  
+a.login-button {
+  text-decoration: none;
+  color: white;
+  background: rgba(231,29,54,0.8);
+  padding: 10px 80px;
+  border: 3px solid #e71d36;
+  border-radius: 9px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-left: 600px;
+}
+
+a:hover { 
+    background-color: yellow;
+    color: blue;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+    text-align: center;
+}
+
+p.signup_field {
+  text-align: center;
+  font-size: 60px;
+}
