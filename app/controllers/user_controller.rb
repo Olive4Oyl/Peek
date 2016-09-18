@@ -19,7 +19,7 @@ class UserController < ApplicationController
         end
         @user = User.create(params)
         session[:id] = @user.id
-
+        
         location_hash = {}
         output = JSON.parse(open('http://ipinfo.io').read)
 

@@ -5,7 +5,7 @@ class PostController < ApplicationController
   get '/posts/new' do
     @user = User.find_by(id: session[:id])
 
-    @inputed_location = Location.find_by(id: @user.location_id)
+    @location = Location.find_by(id: @user.location_id)
     erb :'/posts/new'
   end
 
@@ -122,9 +122,7 @@ class PostController < ApplicationController
 
   get '/posts/:id/location' do
     @user = User.find_by(id: session[:id])
-    @inputed_location = params[:id]
-
+    @location = Location.find_by(city: params[:id])
     erb :'/posts/new'
-
   end
 end
