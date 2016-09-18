@@ -42,6 +42,12 @@ which directs you to the comment/new route
 
 <br></br>
 
+<%@user = User.find_by(id: session[:id])%>
+<% if @post.user_id == @user.id%>
+<a href="/posts/<%=@post.id%>/edit">Edit Post</a>
+<a href="/posts/<%=@post.id%>/delete">Delete Post</a>
+<%end%>
+
 
 <br></br>
 <a href="/users/home">Back</a>

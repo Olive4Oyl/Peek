@@ -2,13 +2,19 @@ class LocationController < ApplicationController
 
 
   post "/locations/view_forums" do
+    user_input = params[:user_input].split.map(&:downcase).join(' ')
 
-    @location = Location.find_or_create_by(city: params[:user_input])
-    erb :'/locations/forums'
+    Cities.data_path = 'cities'
+    c = Cities.cities_in_country('US')
+
+    if c.has_key?(params[:user_input]) || user_input == "staten island"
+      @location = Location.find_or_create_by(city: params[:user_input].split.map(&:capitalize).join(' '))
+      erb :'/locations/forums'
+    else
+      #give error that this city does not exist
+      redirect '/users/home'
+    end
   end
-
-
-
 
 
 

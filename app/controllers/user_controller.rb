@@ -29,7 +29,7 @@ class UserController < ApplicationController
         end
         @user = User.create(params)
         session[:id] = @user.id
-
+        
         location_hash = {}
         output = JSON.parse(open('http://ipinfo.io').read)
 
@@ -38,6 +38,7 @@ class UserController < ApplicationController
         location_hash.to_s
         @current_location = Location.find_or_create_by(city: location_hash[:city])
         @current_location.users << @user
+        @user.save
         redirect '/users/home'
       else
         #put a flash message saying enter a valid email
@@ -55,7 +56,6 @@ class UserController < ApplicationController
 
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
-    #flash message enter something into the fields
     redirect to '/'
   else
     location_hash = {}
