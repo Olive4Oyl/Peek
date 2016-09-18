@@ -19,7 +19,8 @@ menu drag down button.
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
 <br>
-Current location posts: <%= @current_location.city%>
+Current Location : <%= @current_location.city%>
+                   
 <br>
 <%@current_location_posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>

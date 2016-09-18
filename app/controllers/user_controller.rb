@@ -81,9 +81,9 @@ get '/users/home' do
 
   @current_location = Location.find_or_create_by(city: location_hash[:city])
   ### api_end
-  
+
   @user = User.find(session[:id])
-  @current_location_posts = Post.where('location_id = ?',@user.location_id)
+  @current_location_posts = Post.where('location_id = ?',@current_location.id)
 
 
     erb :'/users/home'
