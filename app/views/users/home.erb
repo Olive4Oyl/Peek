@@ -18,6 +18,13 @@ menu drag down button.
 <%@user.posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
+<br>
+Current Location : <%= @current_location.city%>
+                   
+<br>
+<%@current_location_posts.each do |post|%>
+<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
+<%end%>
 
 
 <a href="/posts/new">Create new Post</a>

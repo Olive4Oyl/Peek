@@ -71,7 +71,25 @@ post '/users/login' do
 end
 
 get '/users/home' do
-    @user = User.find(session[:id])
+  ## api_start should be in every rout to fetch current location or posts by location will not work.
+  location_hash = {}
+  output = JSON.parse(open('http://ipinfo.io').read)
+
+  location_hash[:city] = output["city"]
+  location_hash[:zip_code] = output["postal"]
+  location_hash.to_s
+
+  @current_location = Location.find_or_create_by(city: location_hash[:city])
+  ### api_end
+
+  @user = User.find(session[:id])
+  @user.location_id = @current_location.id
+  @current_location_posts = Post.where('location_id = ?',@current_location.id)
+  # binding.pry
+  # sql = "Select avg()"
+# records_array = ActiveRecord::Base.connection.execute(sql)
+
+
     erb :'/users/home'
   end
 
@@ -98,7 +116,7 @@ get '/users/home' do
 
     redirect '/users/home'
   end
- 
+
 
 
 
