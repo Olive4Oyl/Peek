@@ -1,4 +1,7 @@
 <h2>Welcome back you creep</h2>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 
 <form method=POST action="/users/login">
   <p>Email: <input type="text" name="email"></p>
