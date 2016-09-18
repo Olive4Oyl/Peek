@@ -89,8 +89,8 @@ get '/users/home' do
 
   location_hash[:city] = output["city"]
   location_hash[:zip_code] = output["postal"]
-  location_hash.to_s
   binding.pry
+  location_hash.to_s
   @current_location = Location.find_or_create_by(city: location_hash[:city])
   ### api_end
 
