@@ -17,7 +17,7 @@ class PostController < ApplicationController
       else
       @post = Post.create(name: params[:post][:name], content: params[:post][:content])
       @user = User.find_by_id(session[:id])
-      @location = Location.find_or_create_by(city: params[:id])
+      @current_location = Location.find_or_create_by(city: params[:id])
       @user.posts << @post
       @post.user =  @user
       @like = Like.new
@@ -26,7 +26,7 @@ class PostController < ApplicationController
       @dislike.posts << @post
       @like.save
       @dislike.save
-      @location.posts << @post
+      @current_location.posts << @post
 
     end
 

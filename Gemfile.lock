@@ -38,10 +38,19 @@ GEM
       domain_name (~> 0.5)
     i18n (0.7.0)
     jwt (1.5.5)
+    locationary (0.0.5)
+      bundler
+      minitest
+      msgpack
+      pry
+      rake
+      snappy
+      zipruby (= 0.3.6)
     method_source (0.8.2)
     mime-types (2.99.3)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    msgpack (1.0.0)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -114,6 +123,7 @@ GEM
       sinatra (~> 1.0)
     sinatra-twitter-bootstrap (2.3.4)
     slop (3.6.0)
+    snappy (0.0.15)
     sqlite3 (1.3.11)
     thin (1.7.0)
       daemons (~> 1.0, >= 1.0.9)
@@ -133,6 +143,7 @@ GEM
     unf_ext (0.0.7.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    zipruby (0.3.6)
 
 PLATFORMS
   ruby
@@ -142,6 +153,7 @@ DEPENDENCIES
   bcrypt
   capybara
   geocoder
+  locationary
   pry
   rack-flash3
   rack-test
