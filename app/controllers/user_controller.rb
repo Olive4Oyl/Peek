@@ -82,7 +82,7 @@ end
 
 get '/users/home' do
     @user = User.find(session[:id])
-    
+
   ## api_start should be in every rout to fetch current location or posts by location will not work.
   location_hash = {}
   output = JSON.parse(open('http://ipinfo.io').read)
@@ -90,7 +90,7 @@ get '/users/home' do
   location_hash[:city] = output["city"]
   location_hash[:zip_code] = output["postal"]
   location_hash.to_s
-
+  binding.pry
   @current_location = Location.find_or_create_by(city: location_hash[:city])
   ### api_end
 
