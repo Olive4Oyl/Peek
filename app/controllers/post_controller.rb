@@ -3,41 +3,61 @@ class PostController < ApplicationController
 
 
   get '/posts/new' do
+    @user = User.find_by(id: session[:id])
+
+    @inputed_location = Location.find_by(id: @user.location_id)
     erb :'/posts/new'
   end
 
-  post '/posts/:id/new' do
-    if params[:post][:content] == nil || params[:post][:content] == ""
-      #insert flash message
-      redirect to '/posts/new'
-    else
-      @post = Post.create(content: params[:post][:content], name: params[:post][:name])
+    post '/posts/:id/new' do   #this is to create a new post
+
+      if params[:post][:name] == nil || params[:post][:name] == ""
+
+      redirect "/posts/#{params[:id]}/new"
+      else
+      @post = Post.create(name: params[:post][:name], content: params[:post][:content])
       @user = User.find_by_id(session[:id])
-      @forum = Forum.find_or_create_by(params[:id])
-      @forum.posts << @post
-      @post.likes = 0
-      @post.dislikes = 0
+      @location = Location.find_or_create_by(city: params[:id])
       @user.posts << @post
       @post.user =  @user
+      @like = Like.new
+      @dislike = Dislike.new
+      @like.posts << @post
+      @dislike.posts << @post
+      @like.save
+      @dislike.save
+      @location.posts << @post
+
     end
-    erb :'/users/home'
-  end
 
-
+<<<<<<< HEAD
   # get '/posts/view' do
 
   # end
+=======
+      erb :"/users/home"
+
+    end
+
+
+
+>>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
 
 
   get '/posts/:id/view' do
-    @post = Post.find(params[:id])
+
+    @post = Post.find_by(id: params[:id])
+
     erb :'/posts/view'
   end
+
+
 
   get '/posts/:id/new_like' do
     @post = Post.find_by_id(params[:id])
     @user = User.find_by_id(session[:id])
 
+<<<<<<< HEAD
     
     def get_vote
   likes_array = @post.detect{|r| r.id == params[:id].to_i}
@@ -65,10 +85,34 @@ class PostController < ApplicationController
     end
     
     erb :'/posts/view'
+=======
+    Like.all.each do |current_like|
+      if current_like.posts.include?(@post)
+        @like = current_like
+      end
+    end
+
+    Dislike.all.each do |current_dislike|
+      if current_dislike.posts.include?(@post)
+        @dislike = current_dislike
+      end
+    end
+
+    if @dislike.users.include?(@user)
+      @dislike.users.delete(@user)
+    end
+    if !@like.users.include?(@user)
+      @like.users << @user
+    end
+  redirect "posts/#{@post.id}/view"
+>>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
   end
+
+
 
   get '/posts/:id/new_dislike' do
     @post = Post.find_by_id(params[:id])
+<<<<<<< HEAD
     if @post.user_id != @post.user.id 
     @post.dislikes += 1
     @post.save
@@ -76,18 +120,64 @@ class PostController < ApplicationController
 
     erb :'/posts/view'
   end
+=======
+    @user = User.find_by_id(session[:id])
+    Dislike.all.each do |current_dislike|
+      if current_dislike.posts.include?(@post)
+        @dislike = current_dislike
+      end
+    end
+    Like.all.each do |current_like|
+      if current_like.posts.include?(@post)
+        @like = current_like
+      end
+    end
+>>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
 
-  get '/posts/:id' do
-    @post = Post.find_by(id: params[:id])
-    erb :'/posts/view'
+
+    if @like.users.include?(@user)
+      @like.users.delete(@user)
+    end
+    if !@dislike.users.include?(@user)
+      @dislike.users << @user
+    end
+  redirect "posts/#{@post.id}/view"
   end
 
-  get '/posts/:id/edit' do
-    @post = Post.find_by(id: params[:id])
-    erb :'/posts/edit'
+
+
+
+
+
+
+
+
+
+#
+#
+#   get '/posts/:id/edit' do
+#     @post = Post.find_by(id: params[:id])
+#     erb :'/posts/edit'
+#   end
+# #hi
+
+
+
+
+
+
+  get '/posts/:id/location' do
+    @user = User.find_by(id: session[:id])
+    @inputed_location = params[:id]
+
+    erb :'/posts/new'
+
   end
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3e9d2a919cd4695ecb967adbf2c2195ae4aad2cd
 end
 
 

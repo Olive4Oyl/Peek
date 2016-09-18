@@ -6,6 +6,7 @@ if defined?(ActiveRecord::Migrator) && ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use CommentController
 use LocationController
 use PostController
 use UserController

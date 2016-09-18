@@ -1,7 +1,9 @@
 
-<%=@user.name%>
-<%=@user.zip_location%>
-<%=@user.city%>
+<form method="POST" action="/locations/view_forums"><input type="text" name="user_input" value="Search Peek"></form>
+<a href="/users/logout">Log Out</a>
+<a href="/users/update_profile">Profile</a>
+
+
 
 This is the users homepage
 This page should recognize the user due to session and also
@@ -13,10 +15,16 @@ menu drag down button.
 
 
 
-
-
 <%@user.posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
+<br>
+Current Location : <%= @current_location.city%>
+                   
+<br>
+<%@current_location_posts.each do |post|%>
+<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
+<%end%>
 
-<a href="/posts/<%=@user.zip_location%>/new">Create new Post</a>
+
+<a href="/posts/new">Create new Post</a>
