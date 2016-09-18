@@ -83,7 +83,11 @@ get '/users/home' do
   ### api_end
 
   @user = User.find(session[:id])
+  @user.location_id = @current_location.id
   @current_location_posts = Post.where('location_id = ?',@current_location.id)
+  # binding.pry
+  # sql = "Select avg()"
+# records_array = ActiveRecord::Base.connection.execute(sql)
 
 
     erb :'/users/home'
