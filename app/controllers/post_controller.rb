@@ -99,25 +99,24 @@ class PostController < ApplicationController
   end
 
 
+  get '/posts/:id/edit' do
+    @post = Post.find_by(id: params[:id])
+    erb :'/posts/edit'
+  end
 
+  post '/posts/:id/edit' do
+    @post = Post.find_by(id: params[:id])
+    @post.content = params[:post][:content]
+    @post.name = params[:post][:name]
+    @post.save
+    redirect to "/posts/#{@post.id}/view"
+  end
 
-
-
-
-
-
-
-#
-#
-#   get '/posts/:id/edit' do
-#     @post = Post.find_by(id: params[:id])
-#     erb :'/posts/edit'
-#   end
-# #hi
-
-
-
-
+  get '/posts/:id/delete' do
+    @post = Post.find_by(id: params[:id])
+    @post.delete
+    redirect to "/users/home"
+  end
 
 
   get '/posts/:id/location' do

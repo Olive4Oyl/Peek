@@ -1,0 +1,12 @@
+
+<h2> Edit Your Post</h2>
+
+<form method="POST" action="/posts/<%=@post.id%>/edit">
+
+<p>Name your post: <input name="post[name]" type="text">
+  <p>Fill in your content: <input name="post[content]" type="text">
+<br><br>
+
+
+<button type="submit" name="submit">Submit</button>
+</form>
