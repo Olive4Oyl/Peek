@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <! DOCTYPE html>
 <html>
 <head>
@@ -12,20 +12,20 @@
 
     <!--<p>How'd you doing?</p>-->
   </div>
-   
+
   <h2>Peek</h2>
   </div>
-</section> 
+</section>
 <h3>Welcome back you creep</h3>
-=======
+
 <h2>Welcome back you creep</h2>
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
->>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
+
 
 <form method=POST action="/users/login">
   <p class="signup_field"><input type="text" name="email" placeholder="Email"></p>
   <p class="signup_field"><input type="password" name="password_digest" placeholder="Password"></p>
-  	<a href="/users/login" class="login-button">Log In</a>
+  	<a href="/users/home" class="login-button">Log In</a>
 </form>

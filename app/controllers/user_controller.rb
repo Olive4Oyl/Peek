@@ -18,6 +18,7 @@ class UserController < ApplicationController
 
 
 
+
       # flash message enter something into the fields
       flash[:message] = "You are missing a field."
       #flash message enter something into the fields
@@ -92,10 +93,11 @@ end
 
 get '/users/home' do
 
+
+
     @user = User.find(session[:id])
 
   ## api_start should be in every rout to fetch current location or posts by location will not work.
-
   location_hash = {}
   output = JSON.parse(open('http://ipinfo.io').read)
 
@@ -108,11 +110,6 @@ get '/users/home' do
   @user = User.find(session[:id])
   @user.location_id = @current_location.id
   @current_location_posts = Post.where('location_id = ?',@current_location.id)
-
-  # binding.pry
-  # sql = "Select avg()"
-# records_array = ActiveRecord::Base.connection.execute(sql)
-
 
     erb :'/users/home'
   end
