@@ -18,7 +18,8 @@ menu drag down button.
 <%@user.posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
-<br>
+
+<img src='<%=@user.profile_pic%>' alt="" />
 
 Current Location : <%= @current_location.city%>
 

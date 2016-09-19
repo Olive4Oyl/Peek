@@ -22,6 +22,17 @@ class UserController < ApplicationController
         end
         @user = User.create(params)
         session[:id] = @user.id
+        new_gif = Giphy.search('creepy cat', {limit: 50, offset: 25})
+        new_gif = new_gif[rand(0..49)].embed_url.to_s
+
+        http = HTTPClient.new
+        scraped_img_link = Nokogiri::HTML(http.get_content(new_gif))
+    
+        scraped_img_link = scraped_img_link.css("a").css("img").css("#gif")[0].values[2]
+
+        @user.profile_pic = scraped_img_link
+
+
 
         location_hash = {}
         output = JSON.parse(open('http://ipinfo.io').read)
