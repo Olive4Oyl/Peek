@@ -3,11 +3,15 @@
 <h3>Peek Your Mind</h3>
 <br></br>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
   <h4>Im back to Peek:</h4>
 
   <a href="/users/login">Log In</a>
 
-  
+
 
 <br></br>
 
