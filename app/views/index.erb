@@ -23,7 +23,9 @@
 
 	<a href="/users/login" class="login-button">Log In</a>
 
-
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 
 <br></br>
 

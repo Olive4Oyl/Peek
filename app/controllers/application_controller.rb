@@ -4,7 +4,7 @@ require 'open-uri'
 require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
-
+  use Rack::Flash
   register Sinatra::ActiveRecordExtension
 
   enable :sessions
@@ -22,8 +22,6 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 end
-
-
 
   helpers do
 
