@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UserController < ApplicationController
+  use Rack::Flash
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
 
@@ -13,16 +16,21 @@ class UserController < ApplicationController
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
 
+
       # flash message enter something into the fields
       flash[:message] = "You are missing a field."
       #flash message enter something into the fields
       # flash[:message] = "You are missing a field."
+
+      flash[:message] = "Please fill in all categories"
+
       redirect to '/users/signup'
     else
       submitted_email = params[:email]
       if submitted_email.match(VALID_EMAIL_REGEX) != nil
         User.all.each do |user|
           if user.email == submitted_email
+            flash[:message] = "It looks like you already have an account"
             redirect to '/users/login'
 
           end
@@ -38,9 +46,10 @@ class UserController < ApplicationController
         location_hash.to_s
         @current_location = Location.find_or_create_by(city: location_hash[:city])
         @current_location.users << @user
+        @user.save
         redirect '/users/home'
       else
-        #put a flash message saying enter a valid email
+        flash[:message] = "Please enter a valid email address"
         redirect to '/users/signup'
       end
     end
@@ -55,7 +64,7 @@ class UserController < ApplicationController
 
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
-    #flash message enter something into the fields
+    flash[:message] = "Please fill in all categories"
     redirect to '/'
   else
     location_hash = {}
@@ -89,7 +98,7 @@ get '/users/home' do
 
   location_hash[:city] = output["city"]
   location_hash[:zip_code] = output["postal"]
-  binding.pry
+
   location_hash.to_s
   @current_location = Location.find_or_create_by(city: location_hash[:city])
   ### api_end
