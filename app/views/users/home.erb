@@ -1,19 +1,44 @@
 
+<html>
+<head>
+     <link href="/stylesheets/front.css" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+</head>
 <form method="POST" action="/locations/view_forums"><input type="text" name="user_input" value="Search Peek"></form>
-<a href="/users/logout">Log Out</a>
-<a href="/users/update_profile">Profile</a>
+
 
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
 
+<body>
+<nav class="slidemenu">
 
-This is the users homepage
-This page should recognize the user due to session and also
-display all of the users formns in boxes and a search bar.
-menu drag down button.
+ <!-- Item 1 -->
+ <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/></a>
+ <label for="slide-item-1"><a href="/users/home"><p class="icon">🏤</p></a><span>Home</span></label>
 
+ <!-- Item 2 -->
+ <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+ <label for="slide-item-2"><a href="/users/update"><p class="icon">😎</p></a><span>Me</span></label>
 
+ <!-- Item 3 -->
+ <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
+ <label for="slide-item-4"><a href="/users/edit"><p class="icon">📝</p></a><span>Create</span></label>
+
+ <!-- Item 4 -->
+ <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+ <label for="slide-item-3"><a href="/users/logout"><p class="icon">✌</p></a><span>Exit</span></label>
+
+ <div class="clear"></div>
+
+ <!-- Bar -->
+ <div class="slider">
+ <div class="bar"></div>
+ </div>
+
+</nav>
+</body>
 
 <%@user.posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
@@ -26,6 +51,4 @@ Current Location : <%= @current_location.city%>
 <%@current_location.posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
 <%end%>
-
-
-<a href="/posts/new">Create new Post</a>
+</html>
