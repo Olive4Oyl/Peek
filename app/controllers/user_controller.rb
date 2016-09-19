@@ -16,13 +16,8 @@ class UserController < ApplicationController
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
 
-
-
-
-      # flash message enter something into the fields
       flash[:message] = "You are missing a field."
-      #flash message enter something into the fields
-      # flash[:message] = "You are missing a field."
+
 
       flash[:message] = "Please fill in all categories"
 
