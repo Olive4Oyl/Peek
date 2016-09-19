@@ -5,6 +5,7 @@
 	 <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
 </head>
 
+<<<<<<< HEAD
 <section>
   <div class='banner'>
   <div class='head'>
@@ -22,3 +23,15 @@
   <p class="signup_field"><input type="password" name="password_digest" placeholder="Password"></p>
   	<a href="/users/login" class="login-button">Log In</a>
 </form>
+=======
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<form method=POST action="/users/signup">
+  <p>Name: <input type="text" name="name"></p>
+  <p>Email: <input type="text" name="email"></p>
+  <p>Password: <input type="password" name="password_digest"></p>
+  <p><button type="submit">Sign Up</button></p>
+</form>
+>>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b

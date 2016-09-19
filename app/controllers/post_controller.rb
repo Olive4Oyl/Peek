@@ -1,7 +1,5 @@
 class PostController < ApplicationController
 
-
-
   get '/posts/new' do
     @user = User.find_by(id: session[:id])
 

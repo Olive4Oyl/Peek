@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UserController < ApplicationController
+  use Rack::Flash
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
 
@@ -12,24 +15,29 @@ class UserController < ApplicationController
 
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
+<<<<<<< HEAD
 
       # flash message enter something into the fields
       flash[:message] = "You are missing a field."
       #flash message enter something into the fields
       # flash[:message] = "You are missing a field."
+=======
+      flash.now[:message] = "Please fill in all categories"
+>>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
       redirect to '/users/signup'
     else
       submitted_email = params[:email]
       if submitted_email.match(VALID_EMAIL_REGEX) != nil
         User.all.each do |user|
           if user.email == submitted_email
+            flash.now[:message] = "It looks like you already have an account"
             redirect to '/users/login'
 
           end
         end
         @user = User.create(params)
         session[:id] = @user.id
-        
+
         location_hash = {}
         output = JSON.parse(open('http://ipinfo.io').read)
 
@@ -41,13 +49,11 @@ class UserController < ApplicationController
         @user.save
         redirect '/users/home'
       else
-        #put a flash message saying enter a valid email
+        flash.now[:message] = "Please enter a valid email address"
         redirect to '/users/signup'
       end
     end
   end
-
-
 
 
   get '/users/login' do
@@ -56,34 +62,37 @@ class UserController < ApplicationController
 
 post '/users/login' do
   if params[:email] == "" || params[:password_digest] == ""
+    flash.now[:message] = "Please fill in all categories"
     redirect to '/'
   else
-    location_hash = {}
-    output = JSON.parse(open('http://ipinfo.io').read)
-
-    location_hash[:city] = output["city"]
-    location_hash[:zip_code] = output["postal"]
-    location_hash.to_s
-
-    @current_location = Location.find_or_create_by(city: location_hash[:city])
 
     @user = User.find_by(params)
 
     if !@user.nil?
       @user.save
       session[:id] = @user.id
+      location_hash = {}
+      output = JSON.parse(open('http://ipinfo.io').read)
+      location_hash[:city] = output["city"]
+      location_hash[:zip_code] = output["postal"]
+      location_hash.to_s
+      @current_location = Location.find_or_create_by(city: location_hash[:city])
       @current_location.users << @user
       redirect '/users/home'
     else
-      redirect to '/users/login'
+      flash.now[:message] = "Looks like you don't have an account. Sign up here"
+      redirect to '/users/signup'
     end
   end
 end
 
 get '/users/home' do
+<<<<<<< HEAD
     @user = User.find(session[:id])
     
   ## api_start should be in every rout to fetch current location or posts by location will not work.
+=======
+>>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
   location_hash = {}
   output = JSON.parse(open('http://ipinfo.io').read)
 
@@ -92,18 +101,19 @@ get '/users/home' do
   location_hash.to_s
 
   @current_location = Location.find_or_create_by(city: location_hash[:city])
-  ### api_end
 
   @user = User.find(session[:id])
   @user.location_id = @current_location.id
   @current_location_posts = Post.where('location_id = ?',@current_location.id)
+<<<<<<< HEAD
   # binding.pry
   # sql = "Select avg()"
 # records_array = ActiveRecord::Base.connection.execute(sql)
 
+=======
+>>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
     erb :'/users/home'
   end
-
 
 
   get '/users/logout' do

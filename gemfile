@@ -26,4 +26,8 @@ gem 'gemoji'
 =======
 gem 'countries'
 gem 'cities'
+<<<<<<< HEAD
 >>>>>>> 928f231e3256f2c176ad0a5ffe095021c580b650
+=======
+gem 'rack-flash3'
+>>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
