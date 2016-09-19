@@ -176,3 +176,58 @@ input {
     height: 30px;
     font-size: 20px;
 }
+
+
+
+
+
+
+
+
+.update_h2{
+  color: #0E1C36;
+  text-align: center;
+}
+
+
+
+
+
+login_form {
+    width:90%;
+    background-color: #bdd2ff;
+    border: 1px solid white;
+    margin: 50px auto 0;
+    padding: 1em;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align: center;
+}
+
+input[type=text], input[type=password] {
+    text-align:center;
+    display: block;
+    margin: auto;
+    width: 40%;
+    border: 1px solid #818181;
+    padding: 5px;
+}
+
+input[type=submit] , form a {
+  text-decoration: none;
+  color: white;
+  background: rgba(231,29,54,0.8);
+  padding: 10px 80px;
+  border: 3px solid #e71d36;
+  border-radius: 9px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 450px;
+  text-align: center;
+}
+
+input[type=submit]:hover, form a:hover {
+  background-color: yellow;
+  color: blue;
+
+}
