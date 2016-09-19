@@ -2,6 +2,7 @@ require 'socket'
 require 'json'
 require 'open-uri'
 require 'rack-flash'
+# require 'giphy'
 
 class ApplicationController < Sinatra::Base
   use Rack::Flash

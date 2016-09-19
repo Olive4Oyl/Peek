@@ -22,7 +22,8 @@ class UserController < ApplicationController
         end
         @user = User.create(params)
         session[:id] = @user.id
-
+        new_gif = Giphy.search('creepy cat', {limit: 50, offset: 25})
+        @user.profile_pic = new_gif[rand(0..49)].embed_url.to_s
         location_hash = {}
         output = JSON.parse(open('http://ipinfo.io').read)
 
