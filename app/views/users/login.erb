@@ -4,8 +4,8 @@
 <head>
 	 <link href="/stylesheets/layout.css" rel="stylesheet">
 	 <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
-</head>
 
+<<<<<<< HEAD
 <body>
   <div class="container">
   <form class="form-signin">
@@ -22,3 +22,26 @@
 
 
 
+=======
+
+
+    <!--<p>How'd you doing?</p>-->
+
+		<br></br>
+<h2 class="update_h2">Welcome Back You Creep!</h2>
+<br></br>
+
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
+<form method=POST action="/users/login">
+  <p class="signup_field"><input type="text" name="email" placeholder="Email">
+		</br>
+  <p class="signup_field"><input type="password" name="password_digest" placeholder="Password">
+	<br></br>
+  	<button type="submit" value="submit">Log In</button>
+
+</form>
+>>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b

@@ -5,6 +5,10 @@
   margin: auto;
   width: 100%;
   background-color: #0E1C36;
+<<<<<<< HEAD:public/stylesheets/layout.css
+=======
+
+>>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
   overflow: hidden;
   height: auto;
 }
@@ -16,9 +20,9 @@
   border-radius: 50%;
   border: 3px solid #fff;
   position: relative;
-  
+
   margin: auto;
-  
+
   animation: ninja 8s ease infinite;
 }
 .head:before {
@@ -30,7 +34,7 @@
   top: 40%;
   left: 48%;
   content:'';
-  
+
   transform: translateX(-50%);
 }
 
@@ -41,10 +45,10 @@
   content:'';
   height: 20px;
   width: 20px;
-  
+
   bottom: 43%;
   left: 38%;
-  
+
   transform: translateX(-50%);
 
   animation: eyeBlink 5s 1s  linear alternate infinite;
@@ -71,11 +75,11 @@
   16% {
     height: 20px;
   }
-  
+
   62% {
     height: 20px;
   }
-  
+
   64% {
     height: 2px;
   }
@@ -83,11 +87,11 @@
   70% {
     height: 2px;
   }
-  
+
   72% {
     height: 20px;
   }
-  
+
   100% {
     height: 20px;
   }
@@ -133,8 +137,16 @@ a{
 }
 
 
+<<<<<<< HEAD:public/stylesheets/layout.css
 .slide-toggle{
   display: none;
+=======
+
+
+
+h2{
+  color: #0E1C36;
+>>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
 }
 
 .slidemenu{
@@ -153,6 +165,7 @@ a{
   opacity: 0.2;
 }
 
+<<<<<<< HEAD:public/stylesheets/layout.css
 .slidemenu label:hover{
   cursor: pointer;
   color: #666;
@@ -166,6 +179,18 @@ a{
 .slidemenu label .icon{
   font-size: 20px;
   border: solid 2px #333;
+=======
+a.login-button {
+  text-decoration: none;
+  color: white;
+  background: rgba(231,29,54,0.8);
+  padding: 10px 80px;
+  border: 3px solid #e71d36;
+  border-radius: 9px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 450px;
+>>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
   text-align: center;
   height: 50px;
   width: 50px;
@@ -186,11 +211,17 @@ a{
   border-radius: 5px;
 }
 
+<<<<<<< HEAD:public/stylesheets/layout.css
 .slider .bar{
   width: 25%;
   height: 5px;
   background: #333;
   border-radius: 5px;
+=======
+a:hover {
+    background-color: yellow;
+    color: blue;
+>>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
 }
 
 /*Animations*/
@@ -206,9 +237,47 @@ a{
   opacity: 1;
 }
 
+<<<<<<< HEAD:public/stylesheets/layout.css
 .slidemenu #slide-item-1:checked ~ .slider .bar{ margin-left: 0; }
 .slidemenu #slide-item-2:checked ~ .slider .bar{ margin-left: 25%; }
 .slidemenu #slide-item-3:checked ~ .slider .bar{ margin-left: 50%; }
 .slidemenu #slide-item-4:checked ~ .slider .bar{ margin-left: 75%; }
 
 
+=======
+
+
+
+
+
+
+
+.update_h2{
+  color: #0E1C36;
+  text-align: center;
+}
+
+
+
+
+
+login_form {
+    width:90%;
+    background-color: #bdd2ff;
+    border: 1px solid white;
+    margin: 50px auto 0;
+    padding: 1em;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align: center;
+}
+
+input[type=text], input[type=password] {
+    text-align:center;
+    display: block;
+    margin: auto;
+    width: 40%;
+    border: 1px solid #818181;
+    padding: 5px;
+}
+>>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
