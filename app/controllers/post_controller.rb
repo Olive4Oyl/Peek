@@ -27,19 +27,13 @@ class PostController < ApplicationController
       @current_location.posts << @post
 
     end
-
       erb :"/users/home"
-
     end
 
 
 
-
-
   get '/posts/:id/view' do
-
     @post = Post.find_by(id: params[:id])
-
     erb :'/posts/view'
   end
 

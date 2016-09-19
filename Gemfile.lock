@@ -28,6 +28,7 @@ GEM
     domain_name (0.5.20160826)
       unf (>= 0.0.5, < 1.0.0)
     eventmachine (1.2.0.1)
+    gemoji (2.1.0)
     geocoder (1.4.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -115,6 +116,7 @@ DEPENDENCIES
   bcrypt
   cities
   countries
+  gemoji
   geocoder
   pry
   rack-flash3
