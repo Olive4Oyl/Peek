@@ -1,5 +1,7 @@
-class LocationController < ApplicationController
+require 'rack-flash'
 
+class LocationController < ApplicationController
+ use Rack::Flash
 
   post "/locations/view_forums" do
     user_input = params[:user_input].split.map(&:downcase).join(' ')
@@ -11,7 +13,8 @@ class LocationController < ApplicationController
       @location = Location.find_or_create_by(city: params[:user_input].split.map(&:capitalize).join(' '))
       erb :'/locations/forums'
     else
-      #give error that this city does not exist
+
+      flash.now[:message] = "That city doesn't exist. What do you think this is? Disney Land?"
       redirect '/users/home'
     end
   end

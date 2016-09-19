@@ -3,6 +3,9 @@
 <a href="/users/logout">Log Out</a>
 <a href="/users/update_profile">Profile</a>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 
 
 This is the users homepage
