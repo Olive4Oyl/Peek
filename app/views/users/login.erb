@@ -9,8 +9,9 @@
 
     <!--<p>How'd you doing?</p>-->
 
-
-<h3>Welcome back you creep</h3>
+		<br></br>
+<h2 class="update_h2">Welcome Back You Creep!</h2>
+</br>
 
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
@@ -18,7 +19,10 @@
 
 
 <form method=POST action="/users/login">
-  <p class="signup_field"><input type="text" name="email" placeholder="Email"></p>
-  <p class="signup_field"><input type="password" name="password_digest" placeholder="Password"></p>
+  <p class="signup_field"><input type="text" name="email" placeholder="Email">
+		</br>
+  <p class="signup_field"><input type="password" name="password_digest" placeholder="Password">
+	<br></br>
   	<a href="/users/home" class="login-button">Log In</a>
+
 </form>
