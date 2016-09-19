@@ -4,10 +4,11 @@ class PostController < ApplicationController
     @user = User.find_by(id: session[:id])
 
     @location = Location.find_by(id: @user.location_id)
+
     erb :'/posts/new'
   end
 
-    post '/posts/:id/new' do   #this is to create a new post
+    post '/posts/:id/new' do 3  #this is to create a new post
 
       if params[:post][:name] == nil || params[:post][:name] == ""
 

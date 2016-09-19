@@ -1,32 +1,64 @@
 
-<form method="POST" action="/locations/view_forums"><input type="text" name="user_input" value="Search Peek"></form>
-<a href="/users/logout">Log Out</a>
-<a href="/users/update_profile">Profile</a>
+<html>
+<head>
+    <link href="/stylesheets/front.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+</head>
 
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-
-
-This is the users homepage
-This page should recognize the user due to session and also
-display all of the users formns in boxes and a search bar.
-menu drag down button.
+<body>
+  <form method="POST" action="/locations/view_forums"><input type="text" name="user_input" placeholder="Search Peek"></form>
 
 
 
-<%@user.posts.each do |post|%>
-<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
-<%end%>
+<nav class="slidemenu">
+
+<!-- Item 1 -->
+<input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/></a>
+<label for="slide-item-1"><a href="/users/home"><p class="icon">🏠</p></a><span>Home</span></label>
+
+<!-- Item 2 -->
+<input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+<label for="slide-item-2"><a href="/users/update_profile"><p class="icon">😎</p></a><span>Me</span></label>
+
+<!-- Item 3 -->
+<input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
+<label for="slide-item-4"><a href="/posts/new"><p class="icon">📝</p></a><span>Create</span></label>
+
+<!-- Item 4 -->
+<input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+<label for="slide-item-3"><a href="/users/logout"><p class="icon">✌</p></a><span>Exit</span></label>
+
+<div class="clear"></div>
+
+<!-- Bar -->
+<div class="slider">
+<div class="bar"></div>
+</div>
+
+</nav>
 
 <img src='<%=@user.profile_pic%>' alt="" />
 
-Current Location : <%= @current_location.city%>
-
-<br>
-<%@current_location.posts.each do |post|%>
+<br></br>
+<h2>Your posts:</h2>
+<%@user.posts.each do |post|%>
 <a href="/posts/<%=post.id%>/view"><%=post.name%></a>
+<br></br>
 <%end%>
 
 
-<a href="/posts/new">Create new Post</a>
+<br></br>
+Current Location : <%= @current_location.city%>
+
+<br></br>
+
+<h2>Posts in your area</h2>
+<%@current_location.posts.each do |post|%>
+<a href="/posts/<%=post.id%>/view"><%=post.name%></a>
+<br></br>
+<%end%>
+<br></br>
+
+
+</body>
+</html>

@@ -1,6 +1,4 @@
-this is the forumn page that just displays the forumn it
-does not let you comment without the pressing on the href link to reply
-which directs you to the comment/new route
+
 <%Like.all.each do |current_like| %>
 <% if current_like.posts.include?(@post) %>
 <% @like = current_like %>
@@ -15,21 +13,27 @@ which directs you to the comment/new route
 
 
 
+<h1><%=@post.name%></h1>
+
 <br></br>
-<%=@post.content%>
-<br><br>
+<p><%=@post.content%></p>
+<br></br>
+
+<a href="/comments/<%=@post.id%>/new">Comment</a>
+
+<br></br>
+
 
 <%@post.comments.each do |comment|%>
-<%=comment.content%>
+<p><%=comment.content%></p>
+<br></br>
 <%end%>
-<a href="/posts/<%=@post.id%>/new_like">Like</a>:)<%=@like.users.length%>
 
-
+<a href="/posts/<%=@post.id%>/new_like">Like</a><%=@like.users.length%>
 
 <br></br>
 <a href="/posts/<%=@post.id%>/new_dislike">Dislike</a><%=@dislike.users.length%>
 
-<a href="/comments/<%=@post.id%>/new">Comment</a>
 <br></br>
 
 <%@user = User.find_by(id: session[:id])%>

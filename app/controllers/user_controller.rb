@@ -27,7 +27,7 @@ class UserController < ApplicationController
 
         http = HTTPClient.new
         scraped_img_link = Nokogiri::HTML(http.get_content(new_gif))
-    
+
         scraped_img_link = scraped_img_link.css("a").css("img").css("#gif")[0].values[2]
 
         @user.profile_pic = scraped_img_link
@@ -125,3 +125,65 @@ get '/users/home' do
 
 
 end
+
+#***************************************************
+#Login
+
+# <!-- <h2>Welcome back you creep</h2>
+# <% if flash.has?(:message) %>
+#   <%= flash[:message] %>
+# <% end %>
+#
+# <form method=POST action="/users/login">
+#   <p>Email: <input type="text" name="email"></p>
+#   <p>Password: <input type="password" name="password_digest"></p>
+#   <p><button type="submit">Sign In</button></p>
+# </form> -->
+
+#***************************************************
+#Post/View.erb
+
+# 
+# <!-- this is the forumn page that just displays the forumn it
+# does not let you comment without the pressing on the href link to reply
+# which directs you to the comment/new route
+# <%Like.all.each do |current_like| %>
+# <% if current_like.posts.include?(@post) %>
+# <% @like = current_like %>
+#
+# <% end %>
+# <%end%>
+# <%Dislike.all.each do |current_dislike| %>
+#   <%if current_dislike.posts.include?(@post)%>
+#   <%@dislike = current_dislike%>
+#   <%end%>
+# <%end%>
+#
+#
+#
+# <br></br>
+# <%=@post.content%>
+# <br><br>
+#
+# <%@post.comments.each do |comment|%>
+# <%=comment.content%>
+# <%end%>
+# <a href="/posts/<%=@post.id%>/new_like">Like</a>:)<%=@like.users.length%>
+#
+#
+#
+# <br></br>
+# <a href="/posts/<%=@post.id%>/new_dislike">Dislike</a><%=@dislike.users.length%>
+#
+# <a href="/comments/<%=@post.id%>/new">Comment</a>
+# <br></br>
+#
+# <%@user = User.find_by(id: session[:id])%>
+# <% if @post.user_id == @user.id%>
+# <a href="/posts/<%=@post.id%>/edit">Edit Post</a>
+# <a href="/posts/<%=@post.id%>/delete">Delete Post</a>
+# <%end%>
+#
+#
+# <br></br>
+# <a href="/users/home">Back</a> -->
