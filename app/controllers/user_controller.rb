@@ -27,9 +27,9 @@ class UserController < ApplicationController
 
         http = HTTPClient.new
         scraped_img_link = Nokogiri::HTML(http.get_content(new_gif))
-    
-        scraped_img_link = scraped_img_link.css("a").css("img").css("#gif")[0].values[2]
 
+        scraped_img_link = scraped_img_link.css("a").css("img").css("#gif")[0].values[2]
+        binding.pry
         @user.profile_pic = scraped_img_link
 
 
