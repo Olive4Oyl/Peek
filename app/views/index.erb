@@ -1,31 +1,36 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	 <link href="/stylesheets/front.css" rel="stylesheet">
+	 <link href="/stylesheets/layout.css" rel="stylesheet">
 	 <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
+	 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 
-<section>
-  <div class='banner'>
-  <div class='head'>
-
-    <!--<p>How'd you doing?</p>-->
-  </div>
-   
- <!--  <h2>Peek</h2> -->
-  </div>
-</section>
-
-<h3>Peek Your Mind</h3>
-<br></br>
-
-  <p class="index_login">I'm back to Peek</p>
-
-	<a href="/users/login" class="login-button">Log In</a>
-
+<body>
+<nav class="slidemenu">
   
-
-<br></br>
-
-  <p class="index_login">I want to start peeking</p>
-  	<a href="/users/signup" class="login-button">Sign Up</a>
+  <!-- Item 1 -->
+  <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/></a>
+  <label for="slide-item-1"><a href="/users/home"><p class="icon">🏠</p></a><span>Home</span></label>
+  
+  <!-- Item 2 -->
+  <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+  <label for="slide-item-2"><a href="/users/update"><p class="icon">😎</p></a><span>Me</span></label>
+  
+  <!-- Item 3 -->
+  <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
+  <label for="slide-item-4"><a href="/users/edit"><p class="icon">📝</p></a><span>Create</span></label>
+  
+  <!-- Item 4 -->
+  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+  <label for="slide-item-3"><a href="/users/logout"><p class="icon">✌</p></a><span>Exit</span></label>
+  
+  <div class="clear"></div>
+  
+  <!-- Bar -->
+  <div class="slider">
+  <div class="bar"></div>
+  </div>
+  
+</nav>
+ </body>

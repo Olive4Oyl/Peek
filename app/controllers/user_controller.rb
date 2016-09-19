@@ -15,15 +15,12 @@ class UserController < ApplicationController
 
   post '/users/signup' do
     if params[:name] == "" || params[:email] == "" || params[:password_digest] == ""
-<<<<<<< HEAD
 
       # flash message enter something into the fields
       flash[:message] = "You are missing a field."
       #flash message enter something into the fields
       # flash[:message] = "You are missing a field."
-=======
       flash.now[:message] = "Please fill in all categories"
->>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
       redirect to '/users/signup'
     else
       submitted_email = params[:email]
@@ -87,12 +84,9 @@ post '/users/login' do
 end
 
 get '/users/home' do
-<<<<<<< HEAD
     @user = User.find(session[:id])
     
   ## api_start should be in every rout to fetch current location or posts by location will not work.
-=======
->>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
   location_hash = {}
   output = JSON.parse(open('http://ipinfo.io').read)
 
@@ -105,13 +99,9 @@ get '/users/home' do
   @user = User.find(session[:id])
   @user.location_id = @current_location.id
   @current_location_posts = Post.where('location_id = ?',@current_location.id)
-<<<<<<< HEAD
   # binding.pry
   # sql = "Select avg()"
 # records_array = ActiveRecord::Base.connection.execute(sql)
-
-=======
->>>>>>> 07be5b7a015101c812b2cf694a9ae6f5b7e2fd7b
     erb :'/users/home'
   end
 
