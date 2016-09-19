@@ -133,16 +133,15 @@ a{
 }
 
 
-<<<<<<< HEAD:public/stylesheets/layout.css
+
 .slide-toggle{
   display: none;
-=======
+
 
 
 
 h2{
   color: #0E1C36;
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
 }
 
 .slidemenu{
@@ -161,7 +160,7 @@ h2{
   opacity: 0.2;
 }
 
-<<<<<<< HEAD:public/stylesheets/layout.css
+
 .slidemenu label:hover{
   cursor: pointer;
   color: #666;
@@ -175,7 +174,7 @@ h2{
 .slidemenu label .icon{
   font-size: 20px;
   border: solid 2px #333;
-=======
+
 a.login-button {
   text-decoration: none;
   color: white;
@@ -186,7 +185,7 @@ a.login-button {
   font-weight: 900;
   letter-spacing: 2px;
   margin: 450px;
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
+
   text-align: center;
   height: 50px;
   width: 50px;
@@ -207,18 +206,17 @@ a.login-button {
   border-radius: 5px;
 }
 
-<<<<<<< HEAD:public/stylesheets/layout.css
+
 .slider .bar{
   width: 25%;
   height: 5px;
   background: #333;
   border-radius: 5px;
-=======
+
 a:hover {
     background-color: yellow;
     color: blue;
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
-}
+
 
 /*Animations*/
 .slidemenu label, .slider .bar {
@@ -240,7 +238,6 @@ a:hover {
 .slidemenu #slide-item-4:checked ~ .slider .bar{ margin-left: 75%; }
 
 
-=======
 
 
 
@@ -276,4 +273,4 @@ input[type=text], input[type=password] {
     border: 1px solid #818181;
     padding: 5px;
 }
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b:public/stylesheets/front.css
+

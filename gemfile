@@ -17,25 +17,19 @@ gem 'bcrypt'
 gem 'rest-client'
 
 gem 'geocoder'
-<<<<<<< HEAD
-=======
-
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b
 gem 'rack-flash3'
 
 gem 'em-websocket'
 gem 'giphy'
 gem 'gemoji'
-<<<<<<< HEAD
+
 gem 'countries'
 gem 'cities'
 gem 'rack-flash3'
-
-=======
 
 gem 'countries'
 gem 'cities'
 
 gem 'rack-flash3'
 gem 'gemoji'
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b
+
