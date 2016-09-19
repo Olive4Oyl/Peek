@@ -2,6 +2,8 @@ require 'socket'
 require 'json'
 require 'open-uri'
 require 'rack-flash'
+require 'nokogiri'
+require 'httpclient'
 # require 'giphy'
 
 class ApplicationController < Sinatra::Base

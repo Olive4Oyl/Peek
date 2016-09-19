@@ -6,7 +6,7 @@ class Giphy_Scraper
   def self.scrape(input)
     # front_page = Nokogiri::HTML(open("https://www.google.com/finance?q=apple&ei=X1bAV9mnBYjBesP3tsgM"))
        http = HTTPClient.new
-       front_page = Nokogiri::HTML(http.get_content("#{input}"))
+       front_page = Nokogiri::HTML(http.get_content("http://giphy.com/gifs/horror-death-gallows-s4NAqcnB6UjJe"))
 
         posts = []
         front_page.css(".search-result").each do |post|
