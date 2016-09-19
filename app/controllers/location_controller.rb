@@ -9,7 +9,7 @@ class LocationController < ApplicationController
     Cities.data_path = 'cities'
     c = Cities.cities_in_country('US')
 
-    if c.has_key?(params[:user_input]) || user_input == "staten island"
+    if c.has_key?(user_input) || user_input == "staten island"
       @location = Location.find_or_create_by(city: params[:user_input].split.map(&:capitalize).join(' '))
       erb :'/locations/forums'
     else
