@@ -16,11 +16,9 @@ class UserController < ApplicationController
 
 
       flash[:message] = "You are missing a field."
-<<<<<<< HEAD
       #flash message enter something into the fields
       # flash[:message] = "You are missing a field."
       flash.now[:message] = "Please fill in all categories"
-=======
 
 
       flash[:message] = "Please fill in all categories"
@@ -29,8 +27,6 @@ class UserController < ApplicationController
       flash.now[:message] = "Please fill in all categories"
 
       flash[:message] = "Please fill in all categories"
-
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b
       redirect to '/users/signup'
     else
       submitted_email = params[:email]
@@ -94,12 +90,6 @@ class UserController < ApplicationController
 end
 
 get '/users/home' do
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b
     @user = User.find(session[:id])
 
   ## api_start should be in every rout to fetch current location or posts by location will not work.
@@ -115,15 +105,12 @@ get '/users/home' do
   @user = User.find(session[:id])
   @user.location_id = @current_location.id
   @current_location_posts = Post.where('location_id = ?',@current_location.id)
-<<<<<<< HEAD
   # binding.pry
   # sql = "Select avg()"
 # records_array = ActiveRecord::Base.connection.execute(sql)
-=======
 
   flash[:message] = "Welcome Back!"
 
->>>>>>> 3e2e7ed5514459d7c6e6088880930fb88e38882b
     erb :'/users/home'
   end
 
