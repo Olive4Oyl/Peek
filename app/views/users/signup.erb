@@ -1,11 +1,12 @@
-<! DOCTYPE html>
+
 <html>
 <head>
 	 <link href="/stylesheets/front.css" rel="stylesheet">
 	 <link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
 </head>
-
-</section> <h1>I'm ready to Peek:</h1>
+<br></br>
+</section> <h2 class="update_h2">I'm ready to Peek!</h2>
+<br></br>
 
 
 <% if flash.has?(:message) %>
@@ -13,8 +14,9 @@
 <% end %>
 
 <form method=POST action="/users/signup">
-  <p>Name: <input type="text" name="name"></p>
-  <p>Email: <input type="text" name="email"></p>
-  <p>Password: <input type="password" name="password_digest"></p>
-  <p><button type="submit">Sign Up</button></p>
+  <p><input type="text" name="name" placeholder="Name"></p>
+  <p><input type="text" name="email" placeholder="Email"></p>
+  <p><input type="password" name="password_digest" placeholder="Password"></p>
+	<br></br>
+  <p><a herf="/users/signup" class="login-button">Sign Up</a></p>
 </form>
