@@ -18,25 +18,4 @@ class LocationController < ApplicationController
     end
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end

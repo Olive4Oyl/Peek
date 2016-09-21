@@ -1,10 +1,9 @@
 require 'socket'
 require 'json'
 require 'open-uri'
-require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
-  use Rack::Flash
+
   register Sinatra::ActiveRecordExtension
 
   enable :sessions
@@ -12,16 +11,11 @@ class ApplicationController < Sinatra::Base
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/' do
-    
-    location = {}
-    output = JSON.parse(open('http://ipinfo.io').read)
-    location[:city] = output["city"].to_s
-    location[:zipcode] = output["postal"].to_s
-    location.to_s
-
     erb :index
   end
 end
+
+
 
   helpers do
 
@@ -33,5 +27,8 @@ end
        User.find_by(id: session[:id])
 
     end
+
+
+
 
   end

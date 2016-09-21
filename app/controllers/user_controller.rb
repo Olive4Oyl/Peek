@@ -66,7 +66,7 @@ class UserController < ApplicationController
   post '/users/login' do
     if params[:email] == "" || params[:password_digest] == ""
       flash[:message] = "Please fill in all categories"
-      redirect to '/users/login'
+      erb  :'/users/login'
     else
 
     @user = User.find_by(params)

@@ -2,8 +2,8 @@ class PostController < ApplicationController
 
   get '/posts/new' do
     @user = User.find_by(id: session[:id])
-
     @location = Location.find_by(id: @user.location_id)
+    @inputed_location = Location.find_by(id: @user.location_id)
     erb :'/posts/new'
   end
 
@@ -11,8 +11,33 @@ class PostController < ApplicationController
 
       if params[:post][:name] == nil || params[:post][:name] == ""
 
-      redirect "/posts/#{params[:id]}/new"
+      if params[:post][:content] == nil || params[:post][:content] == nil
+        flash[:message] = "Hey you need to enter a name and content!"
       else
+        @post = Post.create(content: params[:post][:content], name: params[:post][:name])
+        @user = User.find_by_id(session[:id])
+        @forum = Forum.find_or_create_by(params[:id])
+        @forum.posts << @post
+        @user.posts << @post
+        @post.user =  @user
+      end
+      erb :"/users/home"
+  end
+
+
+  get '/posts/:id/forum/new' do
+    if params[:post][:content] == nil || params[:post][:content] == ""
+      #insert flash message
+      redirect to '/posts/new'
+    else
+      @post = Post.create(content: params[:post][:content], name: params[:post][:name])
+      @user = User.find_by_id(session[:id])
+      @forum = Forum.find_by_id(params[:id])
+      @forum.posts << @post
+      @user.posts << @post
+      @post.user =  @user
+      redirect "/posts/#{params[:id]}/new"
+    else
       @post = Post.create(name: params[:post][:name], content: params[:post][:content])
       @user = User.find_by_id(session[:id])
       @current_location = Location.find_or_create_by(city: params[:id])
@@ -25,10 +50,9 @@ class PostController < ApplicationController
       @like.save
       @dislike.save
       @current_location.posts << @post
-
     end
       erb :"/users/home"
-    end
+  end
 
 
 
@@ -36,8 +60,6 @@ class PostController < ApplicationController
     @post = Post.find_by(id: params[:id])
     erb :'/posts/view'
   end
-
-
 
   get '/posts/:id/new_like' do
     @post = Post.find_by_id(params[:id])
@@ -61,7 +83,7 @@ class PostController < ApplicationController
     if !@like.users.include?(@user)
       @like.users << @user
     end
-  redirect "posts/#{@post.id}/view"
+    redirect "posts/#{@post.id}/view"
   end
 
 
@@ -79,7 +101,6 @@ class PostController < ApplicationController
         @like = current_like
       end
     end
-
 
     if @like.users.include?(@user)
       @like.users.delete(@user)
